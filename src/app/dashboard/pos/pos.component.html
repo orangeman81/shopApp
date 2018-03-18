@@ -1,0 +1,15 @@
+<!-- floating-action-button -->
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" routerLink="/posweb/operation"><i class="material-icons">payment</i></a>
+</div>
+<main class="container">
+    <header>
+        <h1>POS</h1>
+        <p>Lista dei pos disponibili</p>
+        <!-- <span>
+            <a routerLink="/posweb/addPos" class="btn-floating waves-effect waves-light"><i class="material-icons">add</i></a>
+        </span> -->
+    </header>
+    <!-- <app-pos-list [posList]="posList | async" [shopData]="pos.shopData | async" (delete)="delete($event)"></app-pos-list> -->
+    <app-pos-list [posList]="posList | async" [shopData]="pos.shopData | async"></app-pos-list>
+</main>

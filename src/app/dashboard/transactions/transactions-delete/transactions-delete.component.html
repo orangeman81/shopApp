@@ -1,0 +1,13 @@
+<span>
+  <a [hidden]="!canDelete" href="#modal{{transaction.id}}" class="modal-trigger" (click)="openModal()"><i class="material-icons">&ensp;delete</i></a>
+</span>
+<div id="modal{{transaction.id}}" class="modal" materialize="modal" materialize="modal" [materializeParams]="[{dismissible: false}]" [materializeActions]="modalActions">
+  <div class="modal-content">
+    <h4>Cancella Transazione</h4>
+    <p>vuoi cancellare la transazione del {{transaction.data_completamento | date: 'short'}}?</p>
+  </div>
+  <div class="modal-footer">
+    <a class="waves-effect waves-green btn-flat" (click)="closeModal()">Annulla</a>
+    <a (click)="delete(transaction.id)" class="modal-action modal-close waves-effect waves-green btn-flat">Rimuovi</a>
+  </div>
+</div>

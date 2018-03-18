@@ -1,0 +1,31 @@
+<form (ngSubmit)="updatePos.emit({id:posDetails.id, pos: posDetails})" #pf="ngForm" materialize *ngIf="posDetails">
+    <div class="input-field">
+        <input placeholder id="pospassword" type="password" name="pospassword" class="validate" [(ngModel)]="posDetails.password">
+        <label for="pospassword">Password</label>
+    </div>
+    <div class="input-field">
+        <input placeholder id="etichetta" type="text" name="etichetta" class="validate" [(ngModel)]="posDetails.etichetta" required>
+        <label for="etichetta">Etichetta</label>
+    </div>
+    <div class="input-field">
+        <input placeholder id="indirizzo" type="text" name="indirizzo" class="validate" [(ngModel)]="posDetails.indirizzo">
+        <label for="indirizzo">Indirizzo</label>
+    </div>
+    <div class="input-field">
+        <input placeholder id="cap" type="text" name="cap" class="validate" [(ngModel)]="posDetails.cap">
+        <label for="cap">Cap</label>
+    </div>
+    <div class="input-field">
+        <input placeholder id="comune" type="text" name="comune" class="validate" [(ngModel)]="posDetails.comune">
+        <label for="comune">Comune</label>
+    </div>
+    <div class="input-field">
+        <input placeholder id="provincia" type="text" name="provincia" class="validate" [(ngModel)]="posDetails.provincia">
+        <label for="provincia">Provincia</label>
+    </div>
+    <div class="input-field">
+            <input placeholder id="nazione" type="text" name="nazione" class="validate" [(ngModel)]="posDetails.nazione">
+            <label for="nazione">Nazione</label>
+        </div>
+    <button class="waves-effect waves-light btn" [disabled]="!pf.valid">aggiorna</button>
+</form>

@@ -1,0 +1,26 @@
+<nav>
+  <div *ngIf="shop" class="nav-wrapper">
+    <a routerLink="/posweb/transactions" class="brand-logo"><img src="../../assets/img/logo.png" alt=""></a>
+    <ul class="right hide-on-med-and-down">
+      <li *ngIf="shop"><strong>{{shop.ragione_sociale}}</strong>&emsp;saldo: {{shop.saldo | wk}}</li>
+    </ul>
+    <ul id="slide-out" class="side-nav">
+      <li>
+        <div class="user-view">
+          <div class="background">
+            <img src="../../assets/img/nav_img.jpg">
+          </div>
+          <a routerLink="/posweb/transactions"><img class="responsive-img center-block" src="../../assets/img/logo.png"></a>
+          <a routerLink="/posweb/transactions"><span class="name">{{shop.ragione_sociale}}</span></a>
+          <a routerLink="/posweb/transactions"><span class="email">saldo: {{shop.saldo | wk}}</span></a>
+        </div>
+      </li>
+      <li><a routerLink="/posweb/transactions">Transazioni</a></li>
+      <li><a routerLink="/posweb/pos">POS</a></li>
+      <li><a routerLink="/posweb/operation">Nuova operazione</a></li>
+      <li><a href="#" (click)="logout.emit()"><i class="material-icons">exit_to_app</i></a></li>
+    </ul>
+    <a href="#" data-activates="mobile-demo" class="button-collapse show-on-large" materialize="sideNav" [materializeParams]="[{closeOnClick:true}]"
+      data-activates="slide-out"><i class="material-icons">menu</i></a>
+  </div>
+</nav>

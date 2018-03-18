@@ -1,0 +1,46 @@
+<form (ngSubmit)="newPosForm.emit(newPos)" #posForm="ngForm" autocomplete="off" materialize>
+    <div class="input-field">
+         <input id="username" type="text" name="username"
+         [(ngModel)]="newPos.username" class="validate" focus="true" required>
+        <label for="username">Username*</label>
+    </div>
+    <div class="input-field">
+        <input id="password" type="password" name="password"
+        [(ngModel)]="newPos.password" class="validate" required>
+        <label for="password">Password*</label>
+    </div>
+    <div class="input-field">
+        <input id="repeat" type="password" name="repeat" [(ngModel)]="repeat" class="validate" (ngModelChange)="passwordValidator($event)" required>
+        <label for="repeat">Ripeti password*</label>
+        <p [hidden]="passVal">Le password non combaciano!</p>
+    </div>
+    <div class="input-field">
+        <input id="etichetta" type="text" name="etichetta"
+        [(ngModel)]="newPos.etichetta" class="validate" required>
+        <label for="etichetta">Etichetta*</label>
+    </div>
+    <div class="input-field">
+        <input id="indirizzo" type="text" name="indirizzo"
+        [(ngModel)]="newPos.indirizzo" class="validate">
+        <label for="indirizzo">Indirizzo</label>
+    </div>
+    <div class="input-field">
+        <input id="cap" type="text" name="cap"
+        [(ngModel)]="newPos.cap" class="validate">
+        <label for="cap">CAP</label>
+    </div>
+    <div class="input-field">
+        <input id="comune" type="text" name="comune"
+        [(ngModel)]="newPos.comune" class="validate">
+        <label for="comune">Comune</label>
+    </div>
+    <div class="input-field">
+        <input id="provincia" type="text" name="provincia"
+        [(ngModel)]="newPos.provincia" class="validate">
+        <label for="provincia">Provincia</label>
+    </div>
+    <p [hidden]="!error" class="center-align">{{errorText}}</p>
+    <div class="center-align">
+        <button class="waves-effect waves-light btn" type="submit" [disabled]="!posForm.valid || posForm.pristine || !passVal">aggiungi</button>
+    </div>
+</form>

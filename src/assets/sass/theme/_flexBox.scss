@@ -1,0 +1,31 @@
+// flex-box
+.flex-center {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 800px;
+    header {
+        @include baseline(0);
+    }
+    form {
+        width: 60%;
+        text-align: center;
+        button,
+        a {
+            @include baseline($b: 0);
+        }
+    }
+    @media screen and (max-width: $medium-screen) {
+        min-height: 768px;
+        form {
+            width: 80%;
+        }
+    }
+    @media screen and (max-width: $small-screen) {
+        min-height: 568px;
+        form {
+            width: 90%;
+        }
+    }
+}

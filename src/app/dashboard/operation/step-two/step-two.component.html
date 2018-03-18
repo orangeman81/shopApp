@@ -1,0 +1,74 @@
+<header class="row">
+  <div class="col s12">
+    <div class="creditCard">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12">
+            <h4>{{infoCard?.nome}} {{infoCard?.cognome}}</h4>
+          </div>
+          <div class="col s12 m6">
+            <p>
+              <strong>Provincia:</strong> {{infoCard?.provincia}}</p>
+            <p>
+              <strong>Carta:</strong> {{infoCard?.attivo ? 'attiva' : 'NON ATTIVA'}}</p>
+            <p>
+              <strong>Saldo:</strong> {{infoCard?.saldo | wk}}</p>
+          </div>
+          <div class="col s12 m6">
+            <img src="assets/img/barcode.png" alt="barcode" class="responsive-img">
+            <p>
+              <strong>N° WOWcard:</strong> {{cardCode}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<app-transactions-list [transactions]="transactions" *ngIf="transactionsLength!=0"></app-transactions-list>
+<div class="error-message">
+  <p *ngIf="transactionsLength==0">Il cliente non ha effettuato transazioni</p>
+  <div *ngIf="!transactions" class="preloader-wrapper active">
+    <div class="spinner-layer spinner-orange-only">
+      <div class="circle-clipper left">
+        <div class="circle"></div>
+      </div>
+      <div class="gap-patch">
+        <div class="circle"></div>
+      </div>
+      <div class="circle-clipper right">
+        <div class="circle"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="!infoCard.attivo" class="error-message">
+  <button class="waves-effect waves-light btn" (click)="back.emit()">cambia carta</button>
+</div>
+<form *ngIf="infoCard.attivo" class="row" (ngSubmit)="formTwo.emit(sf.value)" #sf="ngForm" materialize>
+  <div class="input-field col s12">
+    <input id="acquisto" type="number" name="total" #total class="validate" ngModel focus="true" (change)="validateWkfromCard(total.value, Wk.value)"
+      required autofocus>
+    <label class="active" for="acquisto">Totale acquisto (in euro)</label>
+  </div>
+  <div class="input-field col s12">
+    <input placeholder id="wkey" type="number" class="validate" name="utilizzo_wk" min="0" [ngModel]="0" #Wk (change)="validateWkfromCard(total.value, Wk.value)"
+      required autofocus>
+    <label class="active" for="wkey">Utilizzo Wkey dalla carta</label>
+  </div>
+  <div class="input-field col s12" *ngIf="category">
+    <select materialize="material_select" [materializeSelectOptions]="selectOptions" name="categoria_value" ngModel>
+      <option value="" selected>Nessuna categoria</option>
+      <option *ngFor="let cat of category" [value]="cat.categoria_id">{{cat.categoria}}</option>
+    </select>
+    <label>Categoria</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="description" type="text" class="validate" name="description" ngModel>
+    <label class="active" for="description">Descrizione acquisto</label>
+  </div>
+  <div class="error-message">
+    <p [hidden]="!error">{{errorText}}</p>
+    <button class="waves-effect waves-light btn" (click)="back.emit()">cambia carta</button>
+    <button type="submit" class="waves-effect waves-light btn" [disabled]="!sf.valid || !purchaseVal">continua</button>
+  </div>
+</form>

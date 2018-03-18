@@ -1,5 +1,5 @@
 {
-  "name": "shop-app",
+  "name": "shop-on-wow",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
@@ -23,7 +23,12 @@
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "^0.8.14",
+    "angular2-focus": "^1.1.0",
+    "angular2-materialize": "^15.1.9",
+    "angular2-qrcode": "^2.0.1",
+    "jquery": "^3.2.1",
+    "materialize-css": "^0.100.1"
   },
   "devDependencies": {
     "@angular/cli": "1.3.2",

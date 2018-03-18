@@ -1,0 +1,17 @@
+<section>
+  <header>
+    <h3>{{posDetails?.etichetta}}</h3>
+  </header>
+  <ul class="collection">
+      <li class="collection-item"><strong>Username:</strong>&ensp;{{posDetails?.username}}@W{{shopData?.id}}</li>
+      <li class="collection-item"><strong>Indirizzo:</strong>&ensp;{{posDetails?.indirizzo}}</li>
+      <li class="collection-item"><strong>Cap:</strong>&ensp;{{posDetails?.cap}}</li>
+      <li class="collection-item"><strong>Comune:</strong>&ensp;{{posDetails?.comune}}</li>
+      <li class="collection-item"><strong>Provincia:</strong>&ensp;{{posDetails?.provincia}}</li>
+      <li class="collection-item"><strong>Nazione:</strong>&ensp;{{posDetails?.nazione}}</li>
+      <li class="collection-item"><strong>Stato:</strong>&ensp;{{posDetails?.attivo ? 'attivo' : 'disattivato'}}</li>
+    </ul>
+    <div class="center-align">
+      <a class="waves-effect waves-light btn" routerLink="/posweb/pos">tutti i pos</a>
+    </div>
+</section>

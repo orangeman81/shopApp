@@ -1,0 +1,11 @@
+export * from './CategoriaApi';
+import { CategoriaApi } from './CategoriaApi';
+export * from './NegozioApi';
+import { NegozioApi } from './NegozioApi';
+export * from './PosApi';
+import { PosApi } from './PosApi';
+export * from './PromozioneApi';
+import { PromozioneApi } from './PromozioneApi';
+export * from './WisionApi';
+import { WisionApi } from './WisionApi';
+export const APIS = [CategoriaApi, NegozioApi, PosApi, PromozioneApi, WisionApi];

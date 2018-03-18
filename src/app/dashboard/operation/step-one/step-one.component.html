@@ -1,0 +1,15 @@
+<header>
+  <h2>Nuova operazione</h2>
+  <p>Nuovo pagamento con carta</p>
+</header>
+<form class="row" (ngSubmit)="formOne.emit(ff.value)" #ff="ngForm" autocomplete="off" materialize>
+  <div class="input-field col s12">
+    <i class="material-icons prefix">credit_card</i>
+    <input id="card" type="text" class="validate" name="code" ngModel focus="true" required>
+    <label for="card">Numero Carta</label>
+  </div>
+  <div class="error-message">
+    <p [hidden]="!error">{{errorText}}</p>
+    <button class="waves-effect waves-light btn" [disabled]="!ff.valid">continua</button>
+  </div>
+</form>

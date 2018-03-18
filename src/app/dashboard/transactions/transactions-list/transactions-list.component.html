@@ -1,0 +1,38 @@
+<ul class="collapsible" data-collapsible="accordion" materialize="collapsible">
+  <li *ngFor="let transaction of transactions">
+    <div class="collapsible-header animation-slide-up">
+      <div class="innerHeader">
+        <time *ngIf="transaction.data_completamento">
+            <i class="material-icons">access_time</i>{{transaction.data_completamento | date: 'dd/MM, HH:mm'}}
+        </time>
+        <time *ngIf="!transaction.data_completamento">
+            <i class="material-icons">access_time</i>{{transaction.data_richiesta | date: 'dd/MM, HH:mm'}} (non completata)
+        </time>
+        <h5>
+          <i class="material-icons">person</i><a (click)="findClient.emit(transaction.cliente_id)">{{transaction.nominativo_cliente}}</a>
+        </h5>
+      </div>
+      <span *ngIf="transaction.stato == 'completata'"><h5>{{transaction.totale_operazione | euro}}</h5></span>
+      <span *ngIf="transaction.stato == 'richiesta'"><i class="material-icons">block</i></span>
+      <span *ngIf="transaction.stato == 'annullata'"><i class="material-icons">remove_circle</i></span>
+      <app-transactions-delete [transaction]="transaction" (remove)="transaction.stato = 'annullata'"></app-transactions-delete>
+    </div>
+    <div class="collapsible-body">
+      <span>
+          <ul>
+              <li>Stato: {{transaction.stato}}</li>
+              <li *ngIf="transaction.data_completamento">Data completamento: {{transaction.data_completamento | date: 'dd/MM/yyyy, HH:mm:ss'}}</li>
+              <li>Data richiesta: {{transaction.data_richiesta | date: 'dd/MM/yyyy, HH:mm:ss'}}</li>
+              <li *ngIf="transaction.etichetta_pos">POS: {{transaction.etichetta_pos}}</li>
+              <li *ngIf="!transaction.etichetta_pos">POS: POS web</li>
+              <li>Nome cliente: {{transaction.nominativo_cliente}}</li>
+              <li>Totale acquisto: {{transaction.totale_operazione | euro}}</li>
+              <li>Prelievo carta: {{transaction.prelievo_carta | wk}}</li>
+              <li>Descrizione: {{transaction.descrizione}}</li>
+              <li>CashBack: {{transaction.cashback}} %</li>
+              <li>CashBack caricato: {{transaction.cashback_w_key | wk}}</li>
+          </ul>
+      </span>
+    </div>
+  </li>
+</ul>

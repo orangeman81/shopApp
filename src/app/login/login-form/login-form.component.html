@@ -1,0 +1,20 @@
+<div class="flex-center">
+  <header>
+    <figure>
+      <img class="responsive-img center-block" src="../../assets/img/logo.png" alt="">
+    </figure>
+    <h1 class="center-align">POS Web</h1>
+  </header>
+  <form (ngSubmit)="credentials.emit(loginForm.value)" #loginForm="ngForm" materialize>
+    <div class="input-field">
+      <input id="username" type="text" name="username" class="validate" ngModel focus="true" required>
+      <label for="username">User name</label>
+    </div>
+    <div class="input-field">
+      <input id="password" type="password" name="password" class="validate" ngModel required>
+      <label for="password">Password</label>
+    </div>
+    <p [hidden]="!error" class="center-align">{{errorText}}</p>
+    <button class="waves-effect waves-light btn">accedi</button>
+  </form>
+</div>

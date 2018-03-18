@@ -1,0 +1,10 @@
+<main class="container">
+    <header>
+        <span>
+          <h1>Dettagli</h1>
+          <!-- <button (click)="toggleForm()" class="btn-floating waves-effect waves-light"><i class="material-icons">{{icon}}</i></button> -->
+        </span>
+    </header>
+    <app-pos-details-view [posDetails]="posDetails" [shopData]="pos.shopData | async" *ngIf="!formView"></app-pos-details-view>
+    <app-pos-details-form [posDetails]="posDetails" (updatePos)="pos.updatePos($event)" *ngIf="formView"></app-pos-details-form>
+</main>

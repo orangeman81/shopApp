@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('shop-app App', () => {
+describe('shop-on-wow App', () => {
   let page: AppPage;
 
   beforeEach(() => {

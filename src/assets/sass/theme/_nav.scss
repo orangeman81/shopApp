@@ -1,0 +1,32 @@
+nav {
+    .brand-logo {
+        top: .25rem;
+        img {
+            height: auto;
+            width: 6rem;
+        }
+        @media (min-width: $medium-screen-up) {
+            left: 4rem;
+        }
+        @media (max-width: $small-screen) {
+            top: .5rem;
+        }
+    }
+    ul.right li:first-child {
+        padding-right: 1rem;
+    }
+    .side-nav {
+        .name,
+        .email {
+            @extend .boldserrat;
+            color: #fff;
+            text-shadow: 0 0 3px rgba(0, 0, 0, .4);
+        }
+        & li > a {
+            font-size: 1.2rem;
+        }
+        @media (max-width: 374px) {
+            width: 268px;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<!-- floating-action-button -->
+<div *ngIf="summary" class="fixed-action-btn">
+  <a class="btn-floating btn-large waves-effect waves-light" (click)="reset()"><i class="material-icons">payment</i></a>
+</div>
+<main class="container">
+  <section *ngIf="stepOne">
+    <app-step-one [error]="error" [errorText]="errorText" (formOne)="firstStep($event)"></app-step-one>
+  </section>
+  <section *ngIf="stepTwo">
+    <app-step-two (back)="reset()" [error]="error" [errorText]="errorText" [transactions]="transactions" [transactionsLength]="transactionsLength" [infoCard]="infoCard" [cardCode]="cardCode" [category]="category | async" (formTwo)="secondStep($event)"></app-step-two>
+  </section>
+  <section *ngIf="stepThree">
+   <app-step-three 
+    [error]="error"
+    [errorText]="errorText"
+    [infoCard]="infoCard"
+    [cardCode]="cardCode"
+    [purchase]="purchase"
+    [operationResponse]="operationResponse"
+    [pinParzialeData]="pinParzialeData"
+    (parseValue)="parseValue($event)"
+    (back)="back()"
+    (formThree)="thirdStep($event)"></app-step-three>
+  </section>
+  <section *ngIf="summary">
+    <app-summary
+      [error]="error"
+      [errorText]="errorText"
+      [infoCard]="infoCard"
+      [cardCode]="cardCode"
+      [purchase]="purchase"
+      [operationSummary]="operationSummary"
+      [operationResponse]="operationResponse">
+    </app-summary>
+  </section>
+</main>

@@ -1,0 +1,30 @@
+<!-- floating-action-button -->
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large waves-effect waves-light" routerLink="/posweb/operation"><i class="material-icons">payment</i></a>
+</div>
+<main class="container">
+    <header>
+        <h2>Transazioni</h2>
+        <p>Lista delle ultime transazioni</p>
+    </header>
+    <app-search (query)="search($event)"></app-search>
+    <app-transactions-list [transactions]="transactions" (findClient)="searchByClient($event)" *ngIf="transactions?.length!=0">
+    </app-transactions-list>
+    <div class="error-message">
+        <p *ngIf="transactions?.length==0">Non ci sono transazioni</p>
+        <div *ngIf="!transactions" class="preloader-wrapper active">
+            <div class="spinner-layer spinner-orange-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-pagination *ngIf="transactions" [length]="length" (limitCount)="loadContent($event)"></app-pagination>
+</main>

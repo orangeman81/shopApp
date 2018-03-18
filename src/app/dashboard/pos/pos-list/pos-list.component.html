@@ -1,0 +1,23 @@
+<ul class="collapsible" data-collapsible="accordion" materialize="collapsible">
+    <li *ngFor="let pos of posList">
+        <div class="collapsible-header animation-slide-up">
+            <div class="innerHeader">
+                <h5>{{pos.etichetta}}</h5>
+                <p>username: {{pos.username}}@W{{shopData?.id}}</p>
+            </div>
+            <span>
+                <a routerLink="/posweb/pos/{{pos.id}}"><i class="material-icons">info</i></a>
+                <!-- <a *ngIf="pos.attivo == 1" (click)="delete.emit(pos.id)"><i class="material-icons">delete</i></a> -->
+            </span>
+        </div>
+        <div class="collapsible-body">
+            <span>
+                <ul>
+                    <li><strong>Username:</strong> {{pos.username}}@W{{shopData?.id}}</li>
+                    <li><strong>Etichetta:</strong> {{pos.etichetta}}</li>
+                    <li><strong>Indirizzo:</strong> {{pos.indirizzo}}, {{pos.cap}} {{pos.comune}} {{pos.provincia}}, {{pos.nazione}}</li>
+                </ul>
+            </span>
+        </div>
+    </li>
+</ul>
